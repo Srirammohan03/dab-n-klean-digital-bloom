@@ -127,7 +127,7 @@ export const TissueBoxAnimation = () => {
       <div className="fixed bottom-6 right-6 z-40">
         <Button
           size="sm"
-          className="rounded-full bg-[#DB3883] hover:bg-[#c72f74] text-white shadow-lg flex items-center gap-2 px-4"
+          className="rounded-full bg-primary hover:bg-primary/80 text-white shadow-lg flex items-center gap-2 px-4"
           onClick={() => setIsCollapsed(false)}
         >
           <span className="text-xs font-semibold tracking-wide">

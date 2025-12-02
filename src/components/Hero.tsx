@@ -108,14 +108,14 @@ export const Hero = () => {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen pt-20 sm:pt-10 md:pt-2 lg:pt-20 bg-background overflow-hidden"
+      className="relative min-h-screen pt-16 sm:pt-16 md:pt-10 lg:pt-16 bg-background overflow-hidden"
     >
       {/* HERO IMAGE BLOCK */}
       <div className="w-full bg-background">
         <div
           className="
             relative w-full
-            h-[420px] sm:h-[460px] md:h-[520px] lg:h-[740px]
+            h-[480px] sm:h-[480px] md:h-[520px] lg:h-[740px]
           "
         >
           {/* MOBILE IMAGE */}
@@ -137,7 +137,7 @@ export const Hero = () => {
       </div>
 
       {/* CONTENT BAR */}
-      <div className="relative w-full -mt-28 sm:-mt-28 md:-mt-96 lg:-mt-64">
+      <div className="relative w-full -mt-48 sm:-mt-48 md:-mt-96 lg:-mt-64">
         <div className="container mx-auto px-4 pb-6 pt-8 md:pt-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1
@@ -147,8 +147,8 @@ export const Hero = () => {
                 text-3xl md:text-4xl font-bold text-foreground mb-7
               "
             >
-              DAB&apos;N&apos;KLEAN — <span className="text-primary-foreground shadow-sm">Softness You Feel.</span> <br />
-                Hygiene You Trust.
+              DAB&apos;N&apos;KLEAN — Softness You Feel. <br />
+               <span className="text-primary-foreground ">Hygiene You Trust.</span>
             </h1>
 
             <div

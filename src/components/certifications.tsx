@@ -92,12 +92,12 @@ export const CertificationsSection = () => {
   return (
     <section
       id="certifications"
-      className="w-full bg-slate-50 py-12 sm:py-10 lg:py-10"
+      className="w-full bg-slate-5 pb-3"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mb-3">
         {/* Heading */}
         <div className="text-center" data-aos="fade-up">
-          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">
+          <h2 className="mt-3 text-4xl sm:text-4xl lg:text-5xl font-bold text-slate-900">
             Certifications
           </h2>
         </div>

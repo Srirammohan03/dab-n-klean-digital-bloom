@@ -48,36 +48,26 @@ export const Navigation = ({ onCartOpen, cartItemCount }: NavigationProps) => {
               About
             </Link>
 
-            <button
-              onClick={() => scrollToSection("products")}
+             <Link
+              to="/products"
               className="text-foreground hover:text-primary transition-colors text-sm font-medium"
             >
               Products
-            </button>
-            <button
-              onClick={() => scrollToSection("quality")}
+            </Link>
+
+            <Link
+              to="/b2b-partner"
               className="text-foreground hover:text-primary transition-colors text-sm font-medium"
             >
-              Quality &amp; Sustainability
-            </button>
-            <button
-              onClick={() => scrollToSection("b2b")}
-              className="text-foreground hover:text-primary transition-colors text-sm font-medium"
-            >
-              B2B / Bulk
-            </button>
-            <button
-              onClick={() => scrollToSection("faq")}
-              className="text-foreground hover:text-primary transition-colors text-sm font-medium"
-            >
-              FAQ
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
+              B2B & Partners
+            </Link>
+            
+            <Link
+              to="/contact"
               className="text-foreground hover:text-primary transition-colors text-sm font-medium"
             >
               Contact
-            </button>
+            </Link>
 
             <Button onClick={onCartOpen} variant="outline" className="relative">
               <ShoppingCart className="h-4 w-4 mr-2" />
@@ -118,50 +108,40 @@ export const Navigation = ({ onCartOpen, cartItemCount }: NavigationProps) => {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 flex flex-col gap-3">
-            <Link
+             <Link
               to="/"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-left text-foreground hover:text-primary transition-colors py-2 text-sm font-medium"
+              className="text-foreground hover:text-primary transition-colors text-sm font-medium"
             >
               Home
             </Link>
+
             <Link
               to="/about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-left text-foreground hover:text-primary transition-colors py-2 text-sm font-medium"
+              className="text-foreground hover:text-primary transition-colors text-sm font-medium"
             >
               About
             </Link>
-            <button
-              onClick={() => scrollToSection("products")}
-              className="text-left text-foreground hover:text-primary transition-colors py-2 text-sm font-medium"
+
+             <Link
+              to="/products"
+              className="text-foreground hover:text-primary transition-colors text-sm font-medium"
             >
               Products
-            </button>
-            <button
-              onClick={() => scrollToSection("quality")}
-              className="text-left text-foreground hover:text-primary transition-colors py-2 text-sm font-medium"
+            </Link>
+
+            <Link
+              to="/b2b-partner"
+              className="text-foreground hover:text-primary transition-colors text-sm font-medium"
             >
-              Quality &amp; Sustainability
-            </button>
-            <button
-              onClick={() => scrollToSection("b2b")}
-              className="text-left text-foreground hover:text-primary transition-colors py-2 text-sm font-medium"
-            >
-              B2B / Bulk
-            </button>
-            <button
-              onClick={() => scrollToSection("faq")}
-              className="text-left text-foreground hover:text-primary transition-colors py-2 text-sm font-medium"
-            >
-              FAQ
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="text-left text-foreground hover:text-primary transition-colors py-2 text-sm font-medium"
+              B2B & Partners
+            </Link>
+            
+            <Link
+              to="/contact"
+              className="text-foreground hover:text-primary transition-colors text-sm font-medium"
             >
               Contact
-            </button>
+            </Link>
           </div>
         )}
       </div>
