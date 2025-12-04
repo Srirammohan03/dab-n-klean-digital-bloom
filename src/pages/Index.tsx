@@ -82,6 +82,7 @@ const Index = () => {
       <Quality />
       <B2B onEnquiryOpen={() => setCartOpen(true)} />
         <ClientsGlobeSection />
+
       <FAQ />
       <Contact />
       <EnquiryCart

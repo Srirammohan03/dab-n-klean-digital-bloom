@@ -213,38 +213,24 @@ export const Footer = () => {
                 <p className="font-semibold text-white/95">Phone</p>
                 <p className="text-white/90">
                   <a
-                    href="tel:+15551234567"
+                    href="tel:+919618477733"
                     className="transition-colors hover:text-[#FFF2F3]"
                   >
-                    +1 (555) 123-4567
+                    +91 9618477733
                   </a>
                 </p>
-                <p className="text-white/90">
-                  <a
-                    href="tel:+15551234568"
-                    className="transition-colors hover:text-[#FFF2F3]"
-                  >
-                    B2B Hotline: +1 (555) 123-4568
-                  </a>
-                </p>
+                
               </div>
 
               <div>
                 <p className="font-semibold text-white/95">Email</p>
+                
                 <p className="text-white/90">
                   <a
-                    href="mailto:info@dabnklean.com"
+                    href="mailto:Retail@dabnklean.com"
                     className="transition-colors hover:text-[#FFF2F3]"
                   >
-                    info@dabnklean.com
-                  </a>
-                </p>
-                <p className="text-white/90">
-                  <a
-                    href="mailto:b2b@dabnklean.com"
-                    className="transition-colors hover:text-[#FFF2F3]"
-                  >
-                    b2b@dabnklean.com
+                    Retail@dabnklean.com
                   </a>
                 </p>
               </div>

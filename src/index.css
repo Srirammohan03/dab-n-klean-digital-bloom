@@ -209,6 +209,23 @@
     animation: scaleIn 0.5s ease-out;
   }
 
+  .aurora-animation {
+    animation: aurora 60s linear infinite;
+  }
+
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -238,5 +255,58 @@
       opacity: 1;
       transform: scale(1);
     }
+  }
+
+  /* 🔮 QUALITY SECTION AURORA LINES  */
+  @keyframes qualityAuroraMove {
+    0% {
+      background-position: 0% 0%, 0% 0%;
+      transform: translate3d(-8%, -4%, 0);
+    }
+    50% {
+      background-position: 120% 0%, 80% 0%;
+      transform: translate3d(6%, 4%, 0);
+    }
+    100% {
+      background-position: 220% 0%, 160% 0%;
+      transform: translate3d(-6%, 2%, 0);
+    }
+  }
+
+  .quality-aurora-lines {
+    position: absolute;
+    inset: -80px;
+    pointer-events: none;
+    z-index: -1;
+
+    /* moving bright streaks */
+    background-image:
+      repeating-linear-gradient(
+        110deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 255, 255, 0.95) 10%,
+        rgba(255, 255, 255, 0) 16%,
+        rgba(255, 255, 255, 0) 24%
+      ),
+      repeating-linear-gradient(
+        110deg,
+        rgba(191, 219, 254, 0.65) 0%,
+        rgba(129, 140, 248, 0.65) 10%,
+        rgba(56, 189, 248, 0.6) 20%,
+        rgba(244, 114, 182, 0.5) 30%,
+        rgba(56, 189, 248, 0.6) 40%
+      );
+
+    background-size: 260% 260%, 260% 260%;
+    mix-blend-mode: screen;
+    filter: blur(10px);
+    opacity: 0.9;
+    animation: qualityAuroraMove 22s linear infinite;
+  }
+}
+@media (min-width: 1024px) {
+  /* Center the last product when it is alone in the last row (3n+1) */
+  .products-grid > :last-child:nth-child(3n + 1) {
+    grid-column: 2;
   }
 }

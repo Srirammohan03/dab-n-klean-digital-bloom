@@ -44,7 +44,7 @@ const FeatureCard = ({ icon: Icon, title, text, delayMs = 0 }: FeatureCardProps)
         overflow-hidden
         cursor-default
         will-change-transform
-        hover:-translate-y-2 hover:scale-105 hover:shadow-xl
+        hover:-translate-y-2 hover:scale-105 hover:shadow-md
       `}
       style={{
         transitionDelay: `${delayMs}ms`,
@@ -52,6 +52,12 @@ const FeatureCard = ({ icon: Icon, title, text, delayMs = 0 }: FeatureCardProps)
         backgroundImage:
           "radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(183,233,246,0.45), transparent 55%)",
       }}
+      //style={{
+      //   transitionDelay: `${delayMs}ms`,
+      //   // soft pastel blue glow instead of pink
+      //   backgroundImage:
+      //     "radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(246,223,106,0.45), transparent 55%)",
+      // }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -108,7 +114,7 @@ export const Hero = () => {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen pt-16 sm:pt-16 md:pt-10 lg:pt-16 bg-background overflow-hidden"
+      className="relative min-h-screen pt-16 sm:pt-16 md:pt-10 lg:pt-16  bg-white overflow-hidden"
     >
       {/* HERO IMAGE BLOCK */}
       <div className="w-full bg-background">

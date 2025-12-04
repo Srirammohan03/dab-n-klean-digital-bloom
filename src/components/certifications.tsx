@@ -92,7 +92,7 @@ export const CertificationsSection = () => {
   return (
     <section
       id="certifications"
-      className="w-full bg-slate-5 pb-3"
+      className="w-full bg-slate-5 pb-3 pt-4"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mb-3">
         {/* Heading */}

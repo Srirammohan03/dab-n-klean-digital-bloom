@@ -147,10 +147,7 @@ export const Contact = () => {
                       Email
                     </h4>
                     <p className="text-sm text-muted-foreground">
-                      info@dabnklean.com
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      b2b@dabnklean.com
+                      Retail@dabnklean.com
                     </p>
                   </div>
                 </div>
@@ -164,11 +161,9 @@ export const Contact = () => {
                       Phone
                     </h4>
                     <p className="text-sm text-muted-foreground">
-                      +1 (555) 123-4567
+                      +91 9618477733
                     </p>
-                    <p className="text-sm text-muted-foreground">
-                      B2B Hotline: +1 (555) 123-4568
-                    </p>
+                    
                   </div>
                 </div>
               </div>
@@ -226,7 +221,7 @@ export const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+91 ... ... ...."
                     />
                   </div>
                 </div>

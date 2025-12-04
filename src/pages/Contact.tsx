@@ -8,6 +8,9 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import heroImage from "/images/dnk.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import { FallingPattern } from "@/components/ui/falling-pattern";
+import { motion } from "motion/react";
 
 const ContactPage = () => {
   const [cartItems] = useState<any[]>([]);
@@ -84,11 +87,27 @@ const ContactPage = () => {
         </section>
 
         {/* CONTACT SECTION: INFO + FORM */}
-        <section
-          className="py-16 md:py-20 bg-background"
+        {/* <section
+          className="py-16 md:py-20 "
           data-aos="fade-up"
           data-aos-duration="800"
-        >
+        > */}
+        
+          <AuroraBackground>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="aurora-animation relative flex flex-col gap-4 items-center justify-center px-4 py-16 md:py-20"
+            data-aos="fade-up"
+            data-aos-duration="800"
+          >
+            
           <div className="container mx-auto px-4 max-w-5xl">
             <div
               className="mb-10 text-center"
@@ -133,7 +152,7 @@ const ContactPage = () => {
                         Call Us
                       </p>
                       <p className="font-medium text-foreground">
-                        +91 98765 43210
+                       +91 9618477733
                       </p>
                     </div>
                   </div>
@@ -147,7 +166,7 @@ const ContactPage = () => {
                         Email
                       </p>
                       <p className="font-medium text-foreground break-all">
-                        support@dabnklean.com
+                        Retail@dabnklean.com
                       </p>
                     </div>
                   </div>
@@ -164,9 +183,12 @@ const ContactPage = () => {
                         DAB&apos;N&apos;KLEAN HQ
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        3rd Floor, Hygiene Plaza,
+                        7-3-72/1, Old Kurnool Rd,
+                         <br />
+Telangana NGOS Colony, Katedhan,
+
                         <br />
-                        Near City Center, Hyderabad, Telangana, India
+                        Hyderabad, Telangana 500077
                       </p>
                     </div>
                   </div>
@@ -276,14 +298,28 @@ const ContactPage = () => {
               </div>
             </div>
           </div>
-        </section>
+           
+          </motion.div>
+        </AuroraBackground>
+        
+        {/* </section> */}
 
         {/* GOOGLE MAP + CTA SECTION */}
         <section
-          className="py-16 md:py-20 bg-accent/40"
+          className="py-16 md:py-20 "
           data-aos="fade-up"
           data-aos-duration="800"
         >
+          {/* FallingPattern as background */}
+          <div className="absolute inset-0 -z-10 opacity-80">
+            <FallingPattern
+              className="h-full w-full"
+              color="hsl(var(--primary))"
+              backgroundColor="hsl(var(--background))"
+              density={1.1}
+              duration={140}
+            />
+          </div>
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="grid gap-8 md:grid-cols-2 items-center">
               {/* CTA Text */}
@@ -320,7 +356,7 @@ const ContactPage = () => {
                     className="border-primary text-primary hover:bg-primary/10"
                     asChild
                   >
-                    <a href="tel:+919876543210">Call Us</a>
+                    <a href="tel:+919618477733">Call Us</a>
                   </Button>
                 </div>
               </div>

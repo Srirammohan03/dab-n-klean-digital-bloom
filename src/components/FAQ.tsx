@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { FallingPattern } from "@/components/ui/falling-pattern";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -83,7 +84,16 @@ export const FAQ = () => {
   ];
 
   return (
-    <section id="faq" ref={sectionRef} className="py-20 bg-background">
+    <section id="faq" ref={sectionRef} className="relative py-20 overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-white">
+              <FallingPattern
+                className="h-full w-full opacity-80"
+                color="hsl(var(--primary))"
+                backgroundColor="hsl(var(--background))"
+                density={1.1}
+                duration={140}
+              />
+            </div>
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-4">

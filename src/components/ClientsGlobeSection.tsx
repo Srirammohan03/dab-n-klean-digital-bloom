@@ -58,41 +58,42 @@ const clients: ClientLogo[] = [
   {
     name: "Amazon",
     logo: "/logos/amazon.png",
-    url: "https://www.amazon.in/",
+    url: "https://www.amazon.in/stores/DABNKLEAN/page/DD886C88-913C-4CA8-97EA-9047078F4BC2?lp_asin=B08KY75Z8P&ref_=cm_sw_r_ud_sf_stores_RFZTEPX8DT0RE0VJRM7V&store_ref=bl_ast_dp_brandLogo_sto",
   },
   {
     name: "Flipkart",
     logo: "/logos/flipkart.png",
-    url: "https://www.flipkart.com/",
+    url: "https://www.flipkart.com/dab-n-klean-facial-tissues/p/itm4035855f704fa",
   },
 ];
 
 const cloudOptions: ICloud["options"] = {
-  // 3D behaviour
   shape: "sphere",
-  depth: 0.5,             // smaller depth = less crazy perspective
+  depth: 0.5,
   zoom: 0.9,
-
-  // Motion (auto-rotate + mouse influence)
   maxSpeed: 0.025,
   minSpeed: 0.01,
   initial: [0.08, 0.04],
   reverse: false,
-
-  // Interaction
   dragControl: true,
   wheelZoom: false,
   clickToFront: 600,
   activeCursor: "pointer",
-
-  // Visuals
   tooltip: "native",
   tooltipDelay: 0,
   outlineColour: "#0000",
-  imageScale: 1.1,         // adjust if you still want slightly bigger/smaller
+  imageScale: 1.1,
 };
 
 const ClientsGlobeSection: React.FC = () => {
+  // Chips: exclude Amazon & Flipkart
+  const displayClients = clients.filter(
+    (client) => client.name !== "Amazon" && client.name !== "Flipkart"
+  );
+
+  const amazonClient = clients.find((client) => client.name === "Amazon");
+  const flipkartClient = clients.find((client) => client.name === "Flipkart");
+
   return (
     <section
       id="clients"
@@ -184,15 +185,16 @@ const ClientsGlobeSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Legend chips */}
+          {/* Legend + Buy On */}
           <div className="w-full lg:w-1/2">
             <p className="text-sm sm:text-base text-[#27405a]/85 mb-4 lg:mb-5">
               These are just some of the names who have woven DAB&apos;N&apos;KLEAN
               into their shelves, wards, rooms and carts.
             </p>
 
-            <div className="flex flex-wrap gap-2 sm:gap-3">
-              {clients.map((client) => (
+            {/* Partner chips (forced to 2 rows on large screens) */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3 max-w-xl">
+              {displayClients.map((client) => (
                 <span
                   key={client.name + "-chip"}
                   className="
@@ -201,6 +203,7 @@ const ClientsGlobeSection: React.FC = () => {
                     px-3 py-1.5
                     border border-white/90
                     text-[11px] sm:text-xs text-[#11153f]
+                    justify-start
                   "
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-[#1b9ce4]" />
@@ -208,6 +211,53 @@ const ClientsGlobeSection: React.FC = () => {
                 </span>
               ))}
             </div>
+
+            {/* Buy On - Amazon & Flipkart */}
+            {(amazonClient || flipkartClient) && (
+              <div className="mt-4 sm:mt-5">
+                <p className="text-sm sm:text-base font-bold text-[#11153f] mb-3 tracking-[0.22em] uppercase">
+                  Buy On
+                </p>
+                <div className="flex flex-wrap items-center gap-5 sm:gap-6">
+                  {amazonClient && (
+                    <a
+                      href={amazonClient.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="
+                        inline-flex items-center justify-center
+                        rounded-xltransition
+                      "
+                    >
+                      <img
+                        src={amazonClient.logo}
+                        alt="Amazon"
+                        className="h-24 w-auto object-contain"
+                      />
+                      <span className="sr-only">Buy on Amazon</span>
+                    </a>
+                  )}
+                  {flipkartClient && (
+                    <a
+                      href={flipkartClient.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="
+                        inline-flex items-center justify-center
+                        rounded-lg transition border
+                      "
+                    >
+                      <img
+                        src={flipkartClient.logo}
+                        alt="Flipkart"
+                        className="h-28  w-auto object-contain -mt-3"
+                      />
+                      <span className="sr-only">Buy on Flipkart</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

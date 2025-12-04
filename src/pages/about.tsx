@@ -4,11 +4,15 @@ import { useState, useEffect, useRef } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ShieldCheck, Sparkles, Leaf, Quote } from "lucide-react";
-import heroImage from "/images/dnk.jpg";
+import { ShieldCheck, Sparkles, Leaf } from "lucide-react";
 import heroVideo from "/videos/dnk01.mp4";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import { FallingPattern } from "@/components/ui/falling-pattern";
+import { motion } from "motion/react";
+
+/* ---------------- AnimatedNumber ---------------- */
 
 interface AnimatedNumberProps {
   end: number;
@@ -73,6 +77,8 @@ const AnimatedNumber = ({
     </span>
   );
 };
+
+/* ---------------- AboutPage ---------------- */
 
 const AboutPage = () => {
   // Simple local cart state just to satisfy Navigation props
@@ -155,122 +161,146 @@ const AboutPage = () => {
         </section>
 
         {/* ABOUT SECTION */}
-        <section
-          className="py-16 md:py-20 bg-background"
-          data-aos="fade-up"
-          data-aos-duration="800"
-        >
-          <div className="container mx-auto px-4 max-w-5xl">
-            <div
-              className="mb-10 text-center"
-              data-aos="fade-up"
-              data-aos-delay="80"
-            >
-              <p className="text-xs uppercase tracking-[0.25em] text-primary mb-3">
-                Who We Are
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Everyday Hygiene, Elevated
-              </h2>
-              <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-                DAB&apos;N&apos;KLEAN was created with a simple promise: make
-                tissues and hygiene products that people actually love using –
-                soft on the skin, strong in performance, and trustworthy for
-                families, businesses, and HoReCa partners.
-              </p>
-            </div>
-
-            <div className="grid gap-8 md:grid-cols-2 items-start">
+        <AuroraBackground>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="aurora-animation relative flex flex-col gap-4 items-center justify-center px-4 py-16 md:py-20"
+            data-aos="fade-up"
+            data-aos-duration="800"
+          >
+            <div className="container mx-auto px-4 max-w-5xl">
               <div
-                className="space-y-4 text-sm md:text-base text-muted-foreground"
-                data-aos="fade-right"
-                data-aos-delay="120"
+                className="mb-10 text-center"
+                data-aos="fade-up"
+                data-aos-delay="80"
               >
-                <p>
-                  From facial tissues and toilet rolls to kitchen towels and
-                  food-grade papers, each DAB&apos;N&apos;KLEAN product is
-                  designed to handle real-life messes while feeling luxurious in
-                  everyday use.
+                <p className="text-xs uppercase tracking-[0.25em] text-primary mb-3">
+                  Who We Are
                 </p>
-                <p>
-                  We work closely with quality-certified manufacturers, follow
-                  strict hygiene protocols, and keep your comfort at the heart
-                  of every product decision.
-                </p>
-                <p>
-                  Whether it&apos;s a quick dab, a clean wipe, or a full kitchen
-                  clean-up — DAB&apos;N&apos;KLEAN is there in every moment that
-                  needs care.
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                  Everyday Hygiene, Elevated
+                </h2>
+                <p className="text-base md:text-lg text-muted-foreground max-w-5xl mx-auto">
+                  At Dab n Klean, we believe in the power of cleanliness and
+                  hygiene. For over 30 years, the Vijay Anand Group has been at
+                  the forefront of the tissue paper industry, and for the last
+                  decade, our brand Dab n Klean has been committed to bringing
+                  you premium, everyday hygiene solutions that are as reliable
+                  as they are sustainable.
                 </p>
               </div>
 
-              <div
-                className="grid gap-4 sm:grid-cols-2"
-                data-aos="fade-left"
-                data-aos-delay="160"
-              >
+              <div className="grid gap-8 md:grid-cols-2 items-start">
                 <div
-                  className="rounded-2xl border border-primary/10 bg-primary/5 px-5 py-6"
-                  data-aos="fade-up"
-                  data-aos-delay="180"
+                  className="space-y-4 text-sm md:text-base text-muted-foreground"
+                  data-aos="fade-right"
+                  data-aos-delay="120"
                 >
-                  <p className="text-3xl font-bold text-primary mb-1">
-                    {/* 0 → 10 with K+ suffix */}
-                    <AnimatedNumber end={10} suffix="K+" />
+                  <p>
+                    Our wide range of products includes facial tissues, toilet
+                    rolls, kitchen towels, non-woven tissues, napkins, paper
+                    cups, and much more—each designed to meet the everyday needs
+                    of homes and businesses alike. What sets us apart is not
+                    only the quality of our products but also our unwavering
+                    commitment to environmental responsibility.
                   </p>
-                  <p className="text-sm font-semibold text-foreground">
-                    Happy Households
-                  </p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Families who trust DAB&apos;N&apos;KLEAN for everyday
-                    hygiene and comfort.
+                  <p>
+                    We are proud to operate with a sustainable approach at every
+                    step. From the raw materials we source, to the way we
+                    manufacture and deliver our products, sustainability is at
+                    the heart of everything we do. All of our raw materials are
+                    FSC-approved, ensuring that we are contributing to the
+                    preservation of forests while maintaining the highest
+                    standards of quality. These materials are sourced from
+                    trusted suppliers around the world, giving our products the
+                    reliability you can count on.
                   </p>
                 </div>
 
                 <div
-                  className="rounded-2xl border border-primary/10 bg-primary/5 px-5 py-6"
-                  data-aos="fade-up"
-                  data-aos-delay="220"
+                  className="grid gap-4 sm:grid-cols-2"
+                  data-aos="fade-left"
+                  data-aos-delay="160"
                 >
-                  <p className="text-3xl font-bold text-primary mb-1">
-                    {/* 0 → 500 with + suffix */}
-                    <AnimatedNumber end={500} suffix="+" />
-                  </p>
-                  <p className="text-sm font-semibold text-foreground">
-                    HoReCa Partners
-                  </p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Restaurants, cafés and hospitality brands using our products
-                    every day.
-                  </p>
-                </div>
+                  <div
+                    className="rounded-2xl border border-primary/10 bg-primary/5 px-5 py-6"
+                    data-aos="fade-up"
+                    data-aos-delay="180"
+                  >
+                    <p className="text-3xl font-bold text-primary mb-1">
+                      <AnimatedNumber end={10} suffix="M+" />
+                    </p>
+                    <p className="text-sm font-semibold text-foreground">
+                      Happy Households
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Families who trust DAB&apos;N&apos;KLEAN for everyday
+                      hygiene and comfort.
+                    </p>
+                  </div>
 
-                <div
-                  className="rounded-2xl border border-primary/10 bg-primary/5 px-5 py-6 sm:col-span-2"
-                  data-aos="fade-up"
-                  data-aos-delay="260"
-                >
-                  <p className="text-lg font-semibold text-foreground mb-1">
-                    Designed for Everyday Life
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    From home counters to commercial kitchens, our range is
-                    crafted to fit seamlessly into your routines, not disrupt
-                    them.
-                  </p>
+                  <div
+                    className="rounded-2xl border border-primary/10 bg-primary/5 px-5 py-6"
+                    data-aos="fade-up"
+                    data-aos-delay="220"
+                  >
+                    <p className="text-3xl font-bold text-primary mb-1">
+                      <AnimatedNumber end={500} suffix="+" />
+                    </p>
+                    <p className="text-sm font-semibold text-foreground">
+                      HoReCa Partners
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Restaurants, cafés and hospitality brands using our
+                      products every day.
+                    </p>
+                  </div>
+
+                  <div
+                    className="rounded-2xl border border-primary/10 bg-primary/5 px-5 py-6 sm:col-span-2"
+                    data-aos="fade-up"
+                    data-aos-delay="260"
+                  >
+                    <p className="text-lg font-semibold text-foreground mb-1">
+                      Designed for Everyday Life
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      From home counters to commercial kitchens, our range is
+                      crafted to fit seamlessly into your routines, not disrupt
+                      them.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </AuroraBackground>
 
         {/* MISSION & VISION */}
         <section
-          className="py-16 md:py-20 bg-accent/40"
+          className="relative py-16 md:py-20 overflow-hidden"
           data-aos="fade-up"
           data-aos-duration="800"
         >
-          <div className="container mx-auto px-4 max-w-5xl">
+          {/* FallingPattern as background */}
+          <div className="absolute inset-0 -z-10 opacity-80">
+            <FallingPattern
+              className="h-full w-full"
+              color="hsl(var(--primary))"
+              backgroundColor="hsl(var(--background))"
+              density={1.1}
+              duration={140}
+            />
+          </div>
+
+          <div className="container mx-auto px-4 max-w-5xl relative">
             <div
               className="mb-10 text-center"
               data-aos="fade-up"
@@ -381,84 +411,110 @@ const AboutPage = () => {
 
         {/* QUALITY & TRUST BADGES */}
         <section
-          className="py-16 md:py-20 bg-background"
+          className="relative bg-background overflow-hidden"
           data-aos="fade-up"
           data-aos-duration="800"
         >
-          <div className="container mx-auto px-4 max-w-5xl">
-            <div
-              className="mb-10 text-center"
-              data-aos="fade-up"
-              data-aos-delay="80"
+          <AuroraBackground>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="aurora-animation relative flex flex-col gap-4 items-center justify-center"
             >
-              <p className="text-xs uppercase tracking-[0.25em] text-primary mb-3">
-                Quality &amp; Trust
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Why People Choose DAB&apos;N&apos;KLEAN
-              </h2>
-              <p className="text-sm md:text-base text-muted-foreground max-w-3xl mx-auto">
-                We don&apos;t treat tissues as disposable products — we treat
-                them as daily essentials that touch your skin, your food, and
-                your family.
-              </p>
-            </div>
+              <div className="container mx-auto max-w-5xl">
+                <div
+                  className="mb-10 text-center"
+                  data-aos="fade-up"
+                  data-aos-delay="80"
+                >
+                  <p className="text-xs uppercase tracking-[0.25em] text-primary mb-3">
+                    Quality &amp; Trust
+                  </p>
+                  <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                    Why People Choose DAB&apos;N&apos;KLEAN
+                  </h2>
+                  <p className="text-sm md:text-base text-muted-foreground max-w-3xl mx-auto">
+                    We don&apos;t treat tissues as disposable products — we
+                    treat them as daily essentials that touch your skin, your
+                    food, and your family.
+                  </p>
+                </div>
 
-            <div className="grid gap-6 md:grid-cols-3">
-              <div
-                className="rounded-2xl border border-primary/10 bg-blue-50 px-5 py-6 text-center"
-                data-aos="fade-up"
-                data-aos-delay="120"
-              >
-                <ShieldCheck className="h-9 w-9 mx-auto text-primary mb-3" />
-                <h3 className="text-sm md:text-base font-semibold text-foreground mb-2">
-                  Certified Quality
-                </h3>
-                <p className="text-xs md:text-sm text-muted-foreground">
-                  ISO-aligned processes and thorough QC checks on every batch.
-                </p>
-              </div>
+                <div className="grid gap-6 md:grid-cols-3">
+                  <div
+                    className="rounded-2xl border border-primary/10 bg-blue-50 px-5 py-6 text-center"
+                    data-aos="fade-up"
+                    data-aos-delay="120"
+                  >
+                    <ShieldCheck className="h-9 w-9 mx-auto text-primary mb-3" />
+                    <h3 className="text-sm md:text-base font-semibold text-foreground mb-2">
+                      Certified Quality
+                    </h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">
+                      ISO-aligned processes and thorough QC checks on every
+                      batch.
+                    </p>
+                  </div>
 
-              <div
-                className="rounded-2xl border border-primary/10 bg-blue-50 px-5 py-6 text-center"
-                data-aos="fade-up"
-                data-aos-delay="160"
-              >
-                <Sparkles className="h-9 w-9 mx-auto text-primary mb-3" />
-                <h3 className="text-sm md:text-base font-semibold text-foreground mb-2">
-                  Soft, Strong &amp; Safe
-                </h3>
-                <p className="text-xs md:text-sm text-muted-foreground">
-                  Dermatologically considered, highly absorbent, and gentle on
-                  skin.
-                </p>
-              </div>
+                  <div
+                    className="rounded-2xl border border-primary/10 bg-blue-50 px-5 py-6 text-center"
+                    data-aos="fade-up"
+                    data-aos-delay="160"
+                  >
+                    <Sparkles className="h-9 w-9 mx-auto text-primary mb-3" />
+                    <h3 className="text-sm md:text-base font-semibold text-foreground mb-2">
+                      Soft, Strong &amp; Safe
+                    </h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">
+                      Dermatologically considered, highly absorbent, and gentle
+                      on skin.
+                    </p>
+                  </div>
 
-              <div
-                className="rounded-2xl border border-primary/10 bg-blue-50 px-5 py-6 text-center"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <Leaf className="h-9 w-9 mx-auto text-primary mb-3" />
-                <h3 className="text-sm md:text-base font-semibold text-foreground mb-2">
-                  Eco-Conscious Approach
-                </h3>
-                <p className="text-xs md:text-sm text-muted-foreground">
-                  Focus on responsible sourcing and reduced packaging where
-                  possible.
-                </p>
+                  <div
+                    className="rounded-2xl border border-primary/10 bg-blue-50 px-5 py-6 text-center"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    <Leaf className="h-9 w-9 mx-auto text-primary mb-3" />
+                    <h3 className="text-sm md:text-base font-semibold text-foreground mb-2">
+                      Eco-Conscious Approach
+                    </h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">
+                      Focus on responsible sourcing and reduced packaging where
+                      possible.
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </AuroraBackground>
         </section>
 
         {/* CTA SECTION */}
         <section
-          className="py-14 md:py-16 bg-primary-foreground"
+          className="relative py-14 md:py-16 bg-secondary overflow-hidden"
           data-aos="fade-up"
           data-aos-duration="800"
         >
-          <div className="container mx-auto px-4">
+          {/* FallingPattern as background */}
+          <div className="absolute inset-0 -z-10 opacity-80">
+            <FallingPattern
+              className="h-full w-full"
+              color="hsl(var(--primary))"
+              backgroundColor="hsl(var(--background))"
+              density={1.1}
+              duration={140}
+            />
+          </div>
+
+          <div className="container mx-auto px-4 relative">
             <div
               className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
               data-aos="fade-up"

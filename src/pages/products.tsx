@@ -20,6 +20,9 @@ import paperCupsImg from "/images/paper-cups.png";
 import nonWovenImg from "/images/non-woven-tissue.jpg";
 import toiletRoll2PlyImg from "/images/toiletRoll2Ply.jpg";
 import toiletRoll3PlyImg from "/images/toilet-roll-3ply.jpg";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import { FallingPattern } from "@/components/ui/falling-pattern";
+import { motion } from "motion/react";
 
 /* -------------------- DATA -------------------- */
 
@@ -28,7 +31,7 @@ const products: Product[] = [
     id: "facial-tissues",
     name: "Facial Tissues",
     description:
-      "Soft, gentle, and highly absorbent facial tissues made from premium virgin pulp. Ideal for home, office, and personal hygiene.",
+      "Soft, gentle, & highly absorbent facial tissues made from premium virgin pulp. Ideal for home, office, & personal hygiene.",
     features: [
       "Ultra-soft and skin-friendly",
       "Highly absorbent 2-ply / 3-ply options",
@@ -38,6 +41,36 @@ const products: Product[] = [
     uses: ["Home", "Office", "Travel", "Personal Care"],
     image: facialTissuesImg,
     variants: ["Box of 100", "Box of 200", "Cube Box", "Family Pack (10 Boxes)"],
+  },
+  {
+    id: "napkins",
+    name: "Napkins",
+    description:
+      "Soft, hygienic paper napkins available in various sizes—ideal for dining tables, events, and everyday use.",
+    features: [
+      "Soft and absorbent",
+      "Food-grade and hygienic",
+      "Available in multiple sizes",
+      "Durable for dry and wet use",
+    ],
+    uses: ["Dining", "Events", "Restaurants", "Everyday Use"],
+    image: napkinsImg,
+    variants: ["Pack of 100", "Pack of 200", "Pack of 500", "Bulk (5000 pcs)"],
+  },
+  {
+    id: "kitchen-towel",
+    name: "Kitchen Towel",
+    description:
+      "High-absorbency, strong, and grease-resistant kitchen towels for all household cleaning and wiping needs.",
+    features: [
+      "3-ply/4-ply extra absorbent layers",
+      "Grease and spill resistant",
+      "Durable and long-lasting",
+      "Ideal for household and commercial kitchens",
+    ],
+    uses: ["Kitchen", "HoReCa", "Cleaning", "Everyday Use"],
+    image: kitchenTowelsImg,
+    variants: ["Single Roll", "Pack of 2", "Pack of 4", "Bulk (24 rolls)"],
   },
   {
     id: "toilet-roll-2ply",
@@ -70,23 +103,8 @@ const products: Product[] = [
     variants: ["Pack of 4", "Pack of 12", "Pack of 24", "Bulk (96 rolls)"],
   },
   {
-    id: "kitchen-towel",
-    name: "Kitchen Towel",
-    description:
-      "High-absorbency, strong, and grease-resistant kitchen towels for all household cleaning and wiping needs.",
-    features: [
-      "3-ply/4-ply extra absorbent layers",
-      "Grease and spill resistant",
-      "Durable and long-lasting",
-      "Ideal for household and commercial kitchens",
-    ],
-    uses: ["Kitchen", "HoReCa", "Cleaning", "Everyday Use"],
-    image: kitchenTowelsImg,
-    variants: ["Single Roll", "Pack of 2", "Pack of 4", "Bulk (24 rolls)"],
-  },
-  {
     id: "non-woven-tissue",
-    name: "Non-Woven Tissue (Re-usable)",
+    name: "Non-Woven Tissue",
     description:
       "Eco-friendly, thick, and reusable non-woven tissues designed for heavy-duty cleaning and multipurpose usage.",
     features: [
@@ -98,21 +116,6 @@ const products: Product[] = [
     uses: ["Kitchen", "Dusting", "Cleaning", "Multipurpose Wiping"],
     image: nonWovenImg,
     variants: ["Pack of 25", "Pack of 50", "Pack of 100", "Bulk Pack"],
-  },
-  {
-    id: "napkins",
-    name: "Napkins",
-    description:
-      "Soft, hygienic paper napkins available in various sizes—ideal for dining tables, events, and everyday use.",
-    features: [
-      "Soft and absorbent",
-      "Food-grade and hygienic",
-      "Available in multiple sizes",
-      "Durable for dry and wet use",
-    ],
-    uses: ["Dining", "Events", "Restaurants", "Everyday Use"],
-    image: napkinsImg,
-    variants: ["Pack of 100", "Pack of 200", "Pack of 500", "Bulk (5000 pcs)"],
   },
   {
     id: "paper-cups",
@@ -218,6 +221,21 @@ const ProductsPage = () => {
     setCartItems([]);
   };
 
+  // Put this just above `return ( ... )` inside ProductsPage
+  const displayClients = clients.filter(
+    (client) => client.name !== "Amazon" && client.name !== "Flipkart"
+  );
+
+  const amazonLogo = "/logos/amazon.png";
+  const flipkartLogo = "/logos/flipkart.png";
+
+  const amazonUrl =
+    "https://www.amazon.in/stores/DABNKLEAN/page/DD886C88-913C-4CA8-97EA-9047078F4BC2?lp_asin=B08KY75Z8P&ref_=cm_sw_r_ud_sf_stores_RFZTEPX8DT0RE0VJRM7V&store_ref=bl_ast_dp_brandLogo_sto";
+
+  const flipkartUrl =
+    "https://www.flipkart.com/dab-n-klean-facial-tissues/p/itm4035855f704fa";
+
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {/* NAVBAR */}
@@ -240,7 +258,7 @@ const ProductsPage = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/55 to-black/75" />
 
-          <div className="relative h-full max-w-6xl mx-auto px-4 flex flex-col justify-center">
+          <div className="relative h-full max-w-7xl mx-auto px-4 flex flex-col justify-center pt-56">
             <div data-aos="fade-up" data-aos-delay="80">
               <p className="text-xs sm:text-sm text-white/80 mb-2">
                 <span className="cursor-pointer hover:text-[#FFD6E8] transition-colors">
@@ -252,17 +270,9 @@ const ProductsPage = () => {
             </div>
 
             <div data-aos="fade-up" data-aos-delay="150">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 max-w-2xl">
+              <h1 className="text-3xl sm:text-2xl md:text-3xl font-bold text-white mb-3 max-w-2xl">
                 Premium Tissues &amp; Hygiene Products by DAB&apos;N&apos;KLEAN
               </h1>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="220">
-              <p className="mt-1 text-sm sm:text-base text-white/80 max-w-xl">
-                From facial tissues and toilet rolls to kitchen towels, non-woven
-                wipes, and paper cups — explore a range crafted for homes,
-                HoReCa, and modern retail.
-              </p>
             </div>
 
             <div
@@ -296,60 +306,79 @@ const ProductsPage = () => {
         </section>
 
         {/* PRODUCTS GRID */}
-        <section
-          id="products-grid"
-          className="py-16 md:py-20 bg-background"
-          data-aos="fade-up"
-        >
-          <div className="container mx-auto px-4 max-w-6xl">
-            <div
-              className="mb-10 text-center"
-              data-aos="fade-up"
-              data-aos-delay="80"
-            >
-              <p className="text-xs uppercase tracking-[0.25em] text-primary mb-3">
-                Our Range
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-                Everyday Hygiene, Thoughtfully Designed
-              </h2>
-              <p className="text-sm md:text-base text-muted-foreground max-w-3xl mx-auto">
-                Choose from a portfolio that covers daily essentials for homes,
-                offices, cafés, restaurants, hotels, and healthcare spaces — with
-                quality, comfort, and safety at the core.
-              </p>
-            </div>
+        <AuroraBackground className="h-auto items-stretch justify-start bg-background text-foreground py-16 md:py-20">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="aurora-animation relative flex flex-col gap-4 items-center px-4"
+            id="products-grid"
+            data-aos="fade-up"
+            data-aos-duration="800"
+          >
+            <div className="container mx-auto px-4 max-w-6xl">
+              <div
+                className="mb-10 text-center"
+                data-aos="fade-up"
+                data-aos-delay="80"
+              >
+                <p className="text-xs uppercase tracking-[0.25em] text-primary mb-3">
+                  Our Range
+                </p>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                  Everyday Hygiene, Thoughtfully Designed
+                </h2>
+                <p className="text-sm md:text-base text-muted-foreground max-w-3xl mx-auto">
+                  Choose from a portfolio that covers daily essentials for homes,
+                  offices, cafés, restaurants, hotels, and healthcare spaces —
+                  with quality, comfort, and safety at the core.
+                </p>
+              </div>
 
-            <div
-              className="
-                grid gap-8
-                sm:grid-cols-2
-                lg:grid-cols-3
-              "
-            >
-              {products.map((product, index) => (
-                <div
-                  key={product.id}
-                  className="product-card h-full"
-                  data-aos="fade-up"
-                  data-aos-delay={100 + index * 50}
-                >
-                  <ProductCard
-                    product={product}
-                    onAddToEnquiry={handleAddToEnquiry}
-                  />
-                </div>
-              ))}
+              <div
+                className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 products-grid"
+              >
+                {products.map((product, index) => (
+                  <div
+                    key={product.id}
+                    className="product-card h-full"
+                    data-aos="fade-up"
+                    data-aos-delay={100 + index * 50}
+                  >
+                    <ProductCard
+                      product={product}
+                      onAddToEnquiry={handleAddToEnquiry}
+                    />
+                  </div>
+                ))}
+              </div>
+
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </AuroraBackground>
 
         {/* TRUST BADGES / QUALITY */}
         <section
-          className="py-16 md:py-20 bg-accent/40"
+          className="relative py-16 md:py-20 overflow-hidden"
           data-aos="fade-up"
           data-aos-duration="800"
         >
+          {/* FallingPattern as background */}
+          <div className="absolute inset-0 -z-10 opacity-80">
+            <FallingPattern
+              className="h-full w-full"
+              color="hsl(var(--primary))"
+              backgroundColor="hsl(var(--background))"
+              density={1.1}
+              duration={140}
+            />
+          </div>
+
           <div className="container mx-auto px-4 max-w-5xl">
             <div
               className="mb-10 text-center"
@@ -419,6 +448,7 @@ const ProductsPage = () => {
         </section>
 
         {/* CLIENTS SECTION */}
+        {/* CLIENTS SECTION */}
         <section
           className="py-16 md:py-20 bg-background"
           data-aos="fade-up"
@@ -443,18 +473,18 @@ const ProductsPage = () => {
               </p>
             </div>
 
+            {/* Logos in exactly 2 rows on large screens */}
             <div
               className="
                 grid gap-4
                 grid-cols-2
                 sm:grid-cols-3
-                md:grid-cols-4
                 lg:grid-cols-5
                 items-center
                 justify-items-center
               "
             >
-              {clients.map((client, index) => (
+              {displayClients.map((client, index) => (
                 <div
                   key={client.name}
                   className="
@@ -475,15 +505,71 @@ const ProductsPage = () => {
                 </div>
               ))}
             </div>
+
+            {/* BUY ON row */}
+            <div className="mt-8 sm:mt-10 text-center">
+              <p className="text-xl sm:text-xl font-bold text-foreground mb-4 tracking-[0.22em] uppercase">
+                Buy On
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+                {/* Amazon */}
+                <a
+                  href={amazonUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    inline-flex items-center justify-center
+                    rounded-xl transition
+                  "
+                >
+                  <img
+                    src={amazonLogo}
+                    alt="Amazon"
+                    className="h-28  w-auto object-contain"
+                  />
+                  <span className="sr-only">Buy on Amazon</span>
+                </a>
+
+                {/* Flipkart */}
+                <a
+                  href={flipkartUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    inline-flex items-center justify-center
+                    rounded-xl transition
+                  "
+                >
+                  <img
+                    src={flipkartLogo}
+                    alt="Flipkart"
+                    className="h-32  w-auto object-contain -mt-4"
+                  />
+                  <span className="sr-only">Buy on Flipkart</span>
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
+
         {/* CTA SECTION */}
         <section
-          className="py-14 md:py-16 bg-primary-foreground"
+          className="relative py-14 md:py-16 overflow-hidden"
           data-aos="fade-up"
           data-aos-duration="800"
         >
+          {/* FallingPattern as background */}
+          <div className="absolute inset-0 -z-10 opacity-80">
+            <FallingPattern
+              className="h-full w-full"
+              color="hsl(var(--primary))"
+              backgroundColor="hsl(var(--background))"
+              density={1.1}
+              duration={140}
+            />
+          </div>
+
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
               <div>
