@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -37,8 +37,7 @@ export const Products = ({ onAddToEnquiry }: ProductsProps) => {
     {
       id: "napkins",
       name: "Napkins",
-      description:
-        "Soft, hygienic paper napkins ideal for dining tables and events.",
+      description: "Soft, hygienic paper napkins ideal for dining tables and events.",
       features: [],
       uses: [],
       image: napkinsImg,
@@ -95,7 +94,7 @@ export const Products = ({ onAddToEnquiry }: ProductsProps) => {
     const slider = sliderRef.current;
     if (!slider) return;
 
-    const cardWidth = slider.firstElementChild?.clientWidth ?? 300;
+    const cardWidth = slider.firstElementChild?.clientWidth ?? 320;
     slider.scrollTo({
       left:
         direction === "right"
@@ -108,21 +107,38 @@ export const Products = ({ onAddToEnquiry }: ProductsProps) => {
   return (
     <AuroraBackground>
       <motion.div
-        initial={{ opacity: 0.0, y: 40 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-        className="relative flex flex-col gap-4 items-center justify-center px-4 overflow-x-hidden"
+        className="relative px-4"
       >
-        <div className="relative z-10 container mx-auto px-4">
+        <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-12 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
               Our Premium Products
             </h2>
           </div>
 
-          <div className="relative max-w-6xl mx-auto">
+          {/* 🔥 OUTER RELATIVE WRAPPER */}
+          <div className="relative">
 
-            {/* MOBILE SLIDER */}
+            {/* DESKTOP LEFT ARROW — OUTSIDE SECTION */}
+            <button
+              onClick={() => scrollByAmount("left")}
+              className="
+                hidden md:flex
+                absolute top-1/2 -translate-y-1/2
+                -left-20
+                p-3 rounded-full
+                bg-white shadow-xl
+                hover:scale-110 transition
+                z-20
+              "
+            >
+              <ChevronLeft />
+            </button>
+
+            {/* SLIDER */}
             <div
               ref={sliderRef}
               className="
@@ -131,41 +147,53 @@ export const Products = ({ onAddToEnquiry }: ProductsProps) => {
                 sm:auto-cols-[minmax(260px,85%)]
                 md:auto-cols-[minmax(320px,1fr)]
                 lg:auto-cols-[minmax(360px,1fr)]
-                gap-4
+                gap-6
                 overflow-x-auto scroll-smooth
                 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
               "
             >
               {products.map((product) => (
-                <div
+                <ProductCard
                   key={product.id}
-                  className="h-full w-full max-w-full overflow-hidden"
-                >
-                  <ProductCard product={product} onAddToEnquiry={onAddToEnquiry} />
-                </div>
+                  product={product}
+                  onAddToEnquiry={onAddToEnquiry}
+                />
               ))}
             </div>
 
-            {/* Mobile arrows */}
-            <div className="flex md:hidden justify-center gap-4 mt-4">
-              <button
-                type="button"
-                onClick={() => scrollByAmount("left")}
-                className="p-2 rounded-full bg-card shadow"
-              >
-                <ChevronLeft />
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollByAmount("right")}
-                className="p-2 rounded-full bg-card shadow"
-              >
-                <ChevronRight />
-              </button>
-            </div>
+            {/* DESKTOP RIGHT ARROW — OUTSIDE SECTION */}
+            <button
+              onClick={() => scrollByAmount("right")}
+              className="
+                hidden md:flex
+                absolute top-1/2 -translate-y-1/2
+                -right-20
+                p-3 rounded-full
+                bg-white shadow-xl
+                hover:scale-110 transition
+                z-20
+              "
+            >
+              <ChevronRight />
+            </button>
+          </div>
+
+          {/* ✅ MOBILE ARROWS (UNCHANGED) */}
+          <div className="flex md:hidden justify-center gap-4 mt-4">
+            <button
+              onClick={() => scrollByAmount("left")}
+              className="p-2 rounded-full bg-card shadow"
+            >
+              <ChevronLeft />
+            </button>
+            <button
+              onClick={() => scrollByAmount("right")}
+              className="p-2 rounded-full bg-card shadow"
+            >
+              <ChevronRight />
+            </button>
           </div>
         </div>
-
       </motion.div>
     </AuroraBackground>
   );

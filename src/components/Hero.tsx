@@ -150,7 +150,7 @@ export const Hero = () => {
               className="
                 aos-item opacity-0 translate-y-6
                 transition-all duration-700 ease-out
-                text-3xl md:text-4xl font-bold text-foreground mb-7
+                text-2xl md:text-3xl font-bold text-foreground mb-7
               "
             >
               DAB&apos;N&apos;KLEAN — Softness You Feel. <br />
